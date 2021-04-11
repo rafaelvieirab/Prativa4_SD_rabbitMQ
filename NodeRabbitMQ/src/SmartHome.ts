@@ -9,18 +9,18 @@ import { LightBulb } from './smartObjects/LightBulb';
 import { VacuumCleanner } from './smartObjects/VacuumCleaner';
 
 export default class SmartHome {
+	private connection!: Connection;
+	private channel!: Channel;
+
 	private airConditioner!: AirConditioning;
 	private digitalLock!: DigitalLock;
 	private lightbulb!: LightBulb;
 	private vacuumCleaner!: VacuumCleanner;
 
-	private connection!: Connection;
-	private channel!: Channel;
-
 	constructor() {
-		this.airConditioner = new AirConditioning(123);
-		this.digitalLock = new DigitalLock(123);
-		this.lightbulb = new LightBulb(123);
+		this.airConditioner = new AirConditioning(20);
+		this.digitalLock = new DigitalLock(5);
+		this.lightbulb = new LightBulb(20);
 		this.vacuumCleaner = new VacuumCleanner();
 	}
 
@@ -29,11 +29,10 @@ export default class SmartHome {
 		this.channel = await this.connection.createChannel();
     await this.channel.assertExchange(rabbitMQ.EXCHANGE, 'direct', { durable: false });
 
-		this.airConditioner.setChannel(this.channel);
-		this.digitalLock.setChannel(this.channel);
-		this.lightbulb.setChannel(this.channel);
-		this.vacuumCleaner.setChannel(this.channel);
-
+		await this.airConditioner.setChannel(this.channel);
+		await this.digitalLock.setChannel(this.channel);
+		await this.lightbulb.setChannel(this.channel);
+		await this.vacuumCleaner.setChannel(this.channel);
 	}
 
 	public async close() {

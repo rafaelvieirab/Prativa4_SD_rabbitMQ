@@ -1,7 +1,8 @@
 import { Channel, ConsumeMessage } from "amqplib";
 import rabbitMQ from "../config/rabbitMQ";
+import SmartObject from "./SmartObject";
 
-export class LightBulb {
+export class LightBulb implements SmartObject{
   private isOn: boolean;
   private idealLuminosity: number;
 
@@ -22,7 +23,7 @@ export class LightBulb {
       { noAck: true });
   }
 
-  private handleConsume(msg: ConsumeMessage | null) {
+  public handleConsume(msg: ConsumeMessage | null) {
     if (msg) {
       try {
         const luminosity = Number.parseInt(msg.content.toString());

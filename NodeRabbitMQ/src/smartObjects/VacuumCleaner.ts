@@ -1,7 +1,8 @@
 import { Channel, ConsumeMessage } from "amqplib";
 import rabbitMQ from "../config/rabbitMQ";
+import SmartObject from "./SmartObject";
 
-export class VacuumCleanner {
+export class VacuumCleanner implements SmartObject {
   private isOn: boolean;
 
   constructor() {
@@ -20,11 +21,11 @@ export class VacuumCleanner {
       { noAck: true });
   }
 
-  private handleConsume(msg: ConsumeMessage | null) {
+  public handleConsume(msg: ConsumeMessage | null) {
     if (msg) {
       try {
         const command = msg.content.toString();
-        this.handleStatus(command.toUpperCase() === 'START');
+        this.handleStatus(command.toUpperCase() === 'LIGA');
       } catch (error) {
         console.error(error);
       }

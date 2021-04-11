@@ -1,7 +1,8 @@
 import { Channel, ConsumeMessage } from "amqplib";
 import rabbitMQ from "../config/rabbitMQ";
+import SmartObject from "./SmartObject";
 
-export class DigitalLock {
+export class DigitalLock  implements SmartObject{
   private isLocked: boolean;
   private minimumDistance: number;
 
@@ -22,7 +23,7 @@ export class DigitalLock {
       { noAck: true });
   }
 
-  private handleConsume(msg: ConsumeMessage | null) {
+  public handleConsume(msg: ConsumeMessage | null) {
     if (msg) {
       try {
         const distance = Number.parseInt(msg.content.toString());

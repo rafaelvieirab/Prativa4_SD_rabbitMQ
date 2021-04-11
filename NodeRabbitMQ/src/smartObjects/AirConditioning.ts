@@ -1,7 +1,8 @@
 import { Channel, ConsumeMessage } from "amqplib";
 import rabbitMQ from "../config/rabbitMQ";
+import SmartObject from "./SmartObject";
 
-export class AirConditioning {
+export class AirConditioning implements SmartObject{
   private isOn: boolean;
   private idealTemperature: number;
 
@@ -42,12 +43,12 @@ export class AirConditioning {
 
   private turnOn() {
     this.isOn = true;
-    console.log('> O ar condicionado foi ligado....');
+    console.log('> O Ar-Condicionado foi ligado....');
   }
 
   private turnOff() {
     this.isOn = false;
-    console.log('> O ar condicionado foi desligado....');
+    console.log('> O Ar-Condicionado foi desligado....');
   }
 
 }
