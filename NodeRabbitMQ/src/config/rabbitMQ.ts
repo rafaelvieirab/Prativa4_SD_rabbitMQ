@@ -11,13 +11,3 @@ export default {
   EXCHANGE,
   QUEUES
 }
-
-// module.exports = {
-//   //Rabbit
-//   rabbitMQConnectionString: "amqp://localhost:5672",
-
-//   //Queue
-//   rabbitMQQueue: "rocketseat-sample.queue",
-//   rabbitMQExchange: "rocketseat-sample.exchange",
-//   rabbitMQRoutingKey: "rocketseat-sample",
-// }

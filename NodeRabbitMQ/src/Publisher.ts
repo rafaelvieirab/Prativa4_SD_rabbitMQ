@@ -3,7 +3,7 @@ import { Channel, connect, Connection } from 'amqplib';
 import rabbitMqUrl from './config/connection';
 import rabbitMQ from './config/rabbitMQ';
 
-class RabiitMQ {
+class Publisher {
   private connection!: Connection;
   private channel!: Channel;
 
@@ -30,5 +30,5 @@ class RabiitMQ {
     	await this.connection.close();
 	}
 }
-const rabbit = new RabiitMQ
-export default rabbit;
+const publisher = new Publisher
+export default publisher;

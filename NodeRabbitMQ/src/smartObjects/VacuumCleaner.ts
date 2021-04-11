@@ -32,6 +32,13 @@ export class VacuumCleanner implements SmartObject {
     }
   }
 
+  public handleStatus(mustTurnOn: boolean) {
+    if (mustTurnOn) 
+      this.turnOn();
+    else 
+      this.turnOff();
+  }
+
   private turnOn() {
     this.isOn = true;
     console.log('> O Aspirador de pó está ligado....');
@@ -40,12 +47,5 @@ export class VacuumCleanner implements SmartObject {
   private turnOff() {
     this.isOn = false;
     console.log('> O Aspirador de pó está desligado....');
-  }
-
-  public handleStatus(mustTurnOn: boolean) {
-    if (mustTurnOn) 
-      this.turnOn();
-    else 
-      this.turnOff();
   }
 }

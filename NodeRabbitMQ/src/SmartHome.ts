@@ -12,10 +12,10 @@ export default class SmartHome {
 	private connection!: Connection;
 	private channel!: Channel;
 
-	private airConditioner!: AirConditioning;
-	private digitalLock!: DigitalLock;
-	private lightbulb!: LightBulb;
-	private vacuumCleaner!: VacuumCleanner;
+	private airConditioner: AirConditioning;
+	private digitalLock: DigitalLock;
+	private lightbulb: LightBulb;
+	private vacuumCleaner: VacuumCleanner;
 
 	constructor() {
 		this.airConditioner = new AirConditioning(20);
